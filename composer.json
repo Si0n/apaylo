@@ -14,10 +14,10 @@
             "email": "sionix1@gmail.com"
         }
     ],
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "require": {
         "php": "^8.3",
-        "guzzlehttp/guzzle": "8.0.x-dev",
-        "psr/log": "^3.0@dev"
+        "guzzlehttp/guzzle": "^7.9",
+        "psr/log": "^3.0"
     }
 }
