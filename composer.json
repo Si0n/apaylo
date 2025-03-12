@@ -1,0 +1,23 @@
+{
+    "name": "api-integrations/apaylo",
+    "description": "API integration for Apaylo Service",
+    "type": "library",
+    "license": "proprietary",
+    "autoload": {
+        "psr-4": {
+            "ApiIntegrations\\Apaylo\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "sion",
+            "email": "sionix1@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^8.3",
+        "guzzlehttp/guzzle": "8.0.x-dev",
+        "psr/log": "^3.0@dev"
+    }
+}
