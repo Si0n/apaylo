@@ -19,6 +19,16 @@ class ApayloManager
     ) {
     }
 
+    /**
+     * @template T of ApiClient
+     *
+     * @return (
+     *     $apiClientType is ApiClientType::BILL_PAYMENTS ? ClientBillPayments :
+     *     ($apiClientType is ApiClientType::EFT ? ClientEFT :
+     *     ($apiClientType is ApiClientType::INTERAC ? ClientInterac :
+     *     ($apiClientType is ApiClientType::MERCHANT ? ClientMerchant : ApiClient)))
+     * )
+     */
     public function getApiClient(ApiClientType $apiClientType): ApiClient
     {
         if (!isset($this->apiClients[$apiClientType->value])) {
