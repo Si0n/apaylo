@@ -10,19 +10,19 @@ use ApiIntegrations\Apaylo\Enum\EFT\TransactionTypeCode;
 readonly class FoundTransaction implements ResultEntity
 {
     public function __construct(
-        protected ?string $transactionId,
-        protected ?string $transactionNumber,
-        protected ?string $customerNumber,
-        protected ?int $customerAccountId,
-        protected ?TransactionTypeCode $transactionTypeCode,
-        protected ?string $transactionTypeDescription,
-        protected ?EFTTypeCode $eftTypeCode,
-        protected ?string $eftTypeDescription,
-        protected ?\DateTimeInterface $transactionDate,
-        protected ?float $amount,
-        protected ?EFTTransactionStatus $transactionStatus,
-        protected ?string $transactionDescription,
-        protected ?string $returnCode
+        public ?string $transactionId,
+        public ?string $transactionNumber,
+        public ?string $customerNumber,
+        public ?int $customerAccountId,
+        public ?TransactionTypeCode $transactionTypeCode,
+        public ?string $transactionTypeDescription,
+        public ?EFTTypeCode $eftTypeCode,
+        public ?string $eftTypeDescription,
+        public ?\DateTimeInterface $transactionDate,
+        public ?float $amount,
+        public ?EFTTransactionStatus $transactionStatus,
+        public ?string $transactionDescription,
+        public ?string $returnCode
     ) {
     }
 

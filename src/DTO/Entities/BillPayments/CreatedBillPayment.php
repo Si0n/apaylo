@@ -5,10 +5,10 @@ namespace ApiIntegrations\Apaylo\DTO\Entities\BillPayments;
 class CreatedBillPayment
 {
     public function __construct(
-        protected ?string $message,
-        protected ?string $transactionNumber,
-        protected ?float $amount,
-        protected ?string $description
+        public ?string $message,
+        public ?string $transactionNumber,
+        public ?float $amount,
+        public ?string $description
     ) {
     }
 

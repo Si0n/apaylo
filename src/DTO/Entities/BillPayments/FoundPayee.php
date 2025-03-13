@@ -5,8 +5,8 @@ namespace ApiIntegrations\Apaylo\DTO\Entities\BillPayments;
 class FoundPayee
 {
     public function __construct(
-        protected ?string $payeeName,
-        protected ?string $payeeCode
+        public ?string $payeeName,
+        public ?string $payeeCode
     ) {
     }
 

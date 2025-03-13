@@ -8,14 +8,14 @@ use ApiIntegrations\Apaylo\Enum\BillPayments\BillPaymentTransactionStatus;
 class SentBillPayment implements ResultEntity
 {
     public function __construct(
-        protected ?string $customerName = null,
-        protected ?string $transactionDate = null,
-        protected ?float $amount = null,
-        protected ?string $billAccountNumber = null,
-        protected ?string $payeeName = null,
-        protected ?string $description = null,
-        protected ?string $transactionNumber = null,
-        protected string | BillPaymentTransactionStatus | null $status = null,
+        public ?string $customerName = null,
+        public ?string $transactionDate = null,
+        public ?float $amount = null,
+        public ?string $billAccountNumber = null,
+        public ?string $payeeName = null,
+        public ?string $description = null,
+        public ?string $transactionNumber = null,
+        public string | BillPaymentTransactionStatus | null $status = null,
     ) {
     }
 

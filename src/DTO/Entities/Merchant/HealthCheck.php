@@ -7,8 +7,8 @@ use ApiIntegrations\Apaylo\DTO\Entities\ResultEntity;
 readonly class HealthCheck implements ResultEntity
 {
     public function __construct(
-        protected ?string $message = null,
-        protected ?\DateTimeInterface $time = null,
+        public ?string $message = null,
+        public ?\DateTimeInterface $time = null,
     ) {
     }
 
