@@ -3,6 +3,7 @@
 namespace ApiIntegrations\Apaylo\DTO\Entities\BillPayments;
 
 use ApiIntegrations\Apaylo\DTO\Entities\ResultEntity;
+use ApiIntegrations\Apaylo\Enum\BillPayments\BillPaymentTransactionStatus;
 
 class SentBillPayment implements ResultEntity
 {
@@ -14,6 +15,7 @@ class SentBillPayment implements ResultEntity
         protected ?string $payeeName = null,
         protected ?string $description = null,
         protected ?string $transactionNumber = null,
+        protected string | BillPaymentTransactionStatus | null $status = null,
     ) {
     }
 
@@ -30,6 +32,7 @@ class SentBillPayment implements ResultEntity
             payeeName: $data['PayeeName'] ?? null,
             description: $data['Description'] ?? null,
             transactionNumber: $data['TransactionNumber'] ?? null,
+            status: !empty($data['Status']) ? (BillPaymentTransactionStatus::tryFrom($data['Status']) ?? $data['Status']) : null,
         );
     }
 }
