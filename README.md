@@ -104,7 +104,9 @@ Make sure to set the following environment variables in your `.env` file for the
 ```env
 APAYLO_API_KEY=<your_api_key>
 APAYLO_SHARED_SECRET=<your_shared_secret>
-APAYLO_BASE_URI=<base_uri>
+APAYLO_BASE_URI_ENV_1=<base_uri_for_env_1>
+APAYLO_BASE_URI_ENV_2=<base_uri_for_env_2>
+APAYLO_BASE_URI_ENV_3=<base_uri_for_env_3>
 ```
 
 ## Reference
