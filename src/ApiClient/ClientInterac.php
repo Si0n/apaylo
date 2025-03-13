@@ -27,6 +27,10 @@ class ClientInterac implements ApiClient
 
     /**
      * @api REQUEST E-TRANSFER
+     *
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     *
+     * @return ResponseItem<Entities\RequestedEtransferLink>
      */
     public function requestEtransferLink(Requests\RequestEtransferLink $request): ResponseItem
     {
@@ -38,6 +42,10 @@ class ClientInterac implements ApiClient
 
     /**
      * @api REQUEST E-TRANSFER
+     *
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     *
+     * @return ResponseCollection<Entities\FoundRequestedEtransfer>
      */
     public function searchRequestedEtransfer(Requests\SearchRequestedEtransfer $request): ResponseCollection
     {
@@ -51,6 +59,10 @@ class ClientInterac implements ApiClient
      * @api REQUEST E-TRANSFER
      *
      * @deprecated
+     *
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     *
+     * @return ResponseCollection<Entities\FoundRequestedEtransfer>
      */
     public function searchRequestedEtransferArray(Requests\SearchRequestedEtransferArray $request): ResponseCollection
     {
@@ -62,6 +74,10 @@ class ClientInterac implements ApiClient
 
     /**
      * @api SEND E-TRANSFER
+     *
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     *
+     * @return ResponseItem<Entities\SentEtransfer>
      */
     public function sendEtransfer(Requests\SendEtransfer $request): ResponseItem
     {
@@ -73,6 +89,10 @@ class ClientInterac implements ApiClient
 
     /**
      * @api SEND E-TRANSFER
+     *
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     *
+     * @return ResponseCollection<Entities\FoundSentEtransfer>
      */
     public function searchSentEtransfer(Requests\SearchSentEtransfer $request): ResponseCollection
     {
@@ -84,6 +104,10 @@ class ClientInterac implements ApiClient
 
     /**
      * @api COMPLETED E-TRANSFER
+     *
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     *
+     * @return ResponseCollection<Entities\CompletedEtransfer>
      */
     public function searchEtransfers(Requests\SearchEtransfers $request): ResponseCollection
     {
@@ -95,6 +119,10 @@ class ClientInterac implements ApiClient
 
     /**
      * @api COMPLETED E-TRANSFER
+     *
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     *
+     * @return ResponseCollection<Entities\IncomingTransfer>
      */
     public function getIncomingTransfers(Requests\GetIncomingTransfers $request): ResponseCollection
     {

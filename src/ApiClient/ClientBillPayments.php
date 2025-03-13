@@ -25,6 +25,8 @@ class ClientBillPayments implements ApiClient
 
     /**
      * @throws GuzzleException
+     *
+     * @return ResponseItem<Entities\CreatedBillPayment>
      */
     public function createBillPayment(Requests\CreateBillPayment $request): ResponseItem
     {
@@ -36,6 +38,8 @@ class ClientBillPayments implements ApiClient
 
     /**
      * @throws GuzzleException
+     *
+     * @return ResponseItem<Entities\FoundPayee>
      */
     public function searchPayee(Requests\SearchPayee $request): ResponseItem
     {
@@ -47,6 +51,8 @@ class ClientBillPayments implements ApiClient
 
     /**
      * @throws GuzzleException
+     *
+     * @return ResponseCollection<Entities\BillPayment>
      */
     public function getBillPayments(Requests\GetBillPayments $request): ResponseCollection
     {
@@ -58,6 +64,8 @@ class ClientBillPayments implements ApiClient
 
     /**
      * @throws GuzzleException
+     *
+     * @return ResponseCollection<Entities\SentBillPayment>
      */
     public function searchSentBillPayments(Requests\SearchSentBillPayments $request): ResponseCollection
     {
