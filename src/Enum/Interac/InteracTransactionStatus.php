@@ -30,12 +30,14 @@ enum InteracTransactionStatus: string
     private const string TEXT_DECLINED = 'Declined';
     private const string TEXT_UNKNOWN = 'Unknown';
 
+    public const array STATUS_COMPLETED = [
+        self::COMPLETED,
+        self::FULFILLED,
+    ];
+
     public function isCompleted(): bool
     {
-        return match ($this) {
-            self::COMPLETED, self::FULFILLED => true,
-            default => false,
-        };
+        return in_array($this, self::STATUS_COMPLETED);
     }
 
     public function getDescription(): string

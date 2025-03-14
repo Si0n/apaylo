@@ -32,4 +32,8 @@ enum EFTTransactionStatus: string
      * @description Please wait for updated status
      */
     case UNKNOWN = 'Unknown';
+
+    public const array STATUS_COMPLETED = [
+        self::SETTLED,
+    ];
 }
