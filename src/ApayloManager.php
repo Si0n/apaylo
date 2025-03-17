@@ -28,6 +28,20 @@ class ApayloManager
      *     ($apiClientType is ApiClientType::INTERAC ? ClientInterac :
      *     ($apiClientType is ApiClientType::MERCHANT ? ClientMerchant : ApiClient)))
      * )
+     *
+     * @phpstan-return (
+     *     $apiClientType is ApiClientType::BILL_PAYMENTS ? ClientBillPayments :
+     *     ($apiClientType is ApiClientType::EFT ? ClientEFT :
+     *     ($apiClientType is ApiClientType::INTERAC ? ClientInterac :
+     *     ($apiClientType is ApiClientType::MERCHANT ? ClientMerchant : ApiClient)))
+     * )
+     *
+     * @psalm-return (
+     *     $apiClientType is ApiClientType::BILL_PAYMENTS ? ClientBillPayments :
+     *     ($apiClientType is ApiClientType::EFT ? ClientEFT :
+     *     ($apiClientType is ApiClientType::INTERAC ? ClientInterac :
+     *     ($apiClientType is ApiClientType::MERCHANT ? ClientMerchant : ApiClient)))
+     * )
      */
     public function getApiClient(ApiClientType $apiClientType): ApiClient
     {
