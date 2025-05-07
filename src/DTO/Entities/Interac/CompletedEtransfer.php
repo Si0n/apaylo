@@ -32,7 +32,7 @@ readonly class CompletedEtransfer implements ResultEntity
      */
     public static function fromArray(array $data): self
     {
-        $isAutoDeposit = $data['IsAutoDeposit'] ?? null;
+        $isAutoDeposit = $data['IsAutodeposit'] ?? null;
 
         $isAutoDeposit = match (true) {
             is_string($isAutoDeposit) && 'true' === strtolower($isAutoDeposit) => true,
