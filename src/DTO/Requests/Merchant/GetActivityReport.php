@@ -8,7 +8,8 @@ class GetActivityReport
 {
     public function __construct(
         protected \DateTimeInterface $startDate,
-        protected \DateTimeInterface $endDate
+        protected \DateTimeInterface $endDate,
+        protected string $dateFormat = 'Y-m-d H:i:s',
     ) {
         if ($this->startDate->diff($this->endDate)->days > 31) {
             throw new \InvalidArgumentException('The date range should not exceed 1 month.');
@@ -19,8 +20,8 @@ class GetActivityReport
     {
         return [
             RequestOptions::JSON => array_filter([
-                'StartDate' => $this->startDate->format('Y-m-d'),
-                'EndDate' => $this->endDate->format('Y-m-d'),
+                'StartDate' => $this->startDate->format($this->dateFormat),
+                'EndDate' => $this->endDate->format($this->dateFormat),
             ]),
         ];
     }

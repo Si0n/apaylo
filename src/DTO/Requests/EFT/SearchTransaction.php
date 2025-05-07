@@ -26,7 +26,8 @@ class SearchTransaction
         protected ?float $minAmount = null,
         protected ?float $maxAmount = null,
         protected ?\DateTimeInterface $minTransactionDate = null,
-        protected ?\DateTimeInterface $maxTransactionDate = null
+        protected ?\DateTimeInterface $maxTransactionDate = null,
+        protected string $dateFormat = 'Y-m-d H:i:s',
     ) {
     }
 
@@ -40,8 +41,8 @@ class SearchTransaction
                 'TransactionTypeCode' => $this->transactionTypeCode?->value,
                 'MinAmount' => $this->minAmount,
                 'MaxAmount' => $this->maxAmount,
-                'MinTransactionDate' => $this->minTransactionDate?->format('Y-m-d'),
-                'MaxTransactionDate' => $this->maxTransactionDate?->format('Y-m-d'),
+                'MinTransactionDate' => $this->minTransactionDate?->format($this->dateFormat),
+                'MaxTransactionDate' => $this->maxTransactionDate?->format($this->dateFormat),
             ]),
         ];
     }

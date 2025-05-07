@@ -15,6 +15,7 @@ class GetBillPayments
         protected \DateTimeInterface $startDate,
         protected \DateTimeInterface $endDate,
         protected ?string $searchString = null,
+        protected string $dateFormat = 'Y-m-d H:i:s',
     ) {
     }
 
@@ -22,8 +23,8 @@ class GetBillPayments
     {
         return [
             RequestOptions::JSON => array_filter([
-                'StartDate' => $this->startDate?->format('Y-m-d'),
-                'EndDate' => $this->endDate?->format('Y-m-d'),
+                'StartDate' => $this->startDate?->format($this->dateFormat),
+                'EndDate' => $this->endDate?->format($this->dateFormat),
                 'SearchString' => $this->searchString,
             ]),
         ];

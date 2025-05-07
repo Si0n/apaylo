@@ -11,6 +11,7 @@ class GetAllTransactions
         protected \DateTimeInterface $startDate,
         protected \DateTimeInterface $endDate,
         protected ?NormalizedTransactionType $searchTransactionType = null,
+        protected string $dateFormat = 'Y-m-d H:i:s',
     ) {
     }
 
@@ -18,8 +19,8 @@ class GetAllTransactions
     {
         return [
             RequestOptions::JSON => array_filter([
-                'StartDate' => $this->startDate->format('Y-m-d'),
-                'EndDate' => $this->endDate->format('Y-m-d'),
+                'StartDate' => $this->startDate->format($this->dateFormat),
+                'EndDate' => $this->endDate->format($this->dateFormat),
                 'SearchTransactionType' => $this->searchTransactionType?->value,
             ]),
         ];

@@ -13,7 +13,8 @@ class SearchRequestedEtransfer
         protected ?string $description = null,
         protected ?string $transactionNumber = null,
         protected ?string $interacReferenceNumber = null,
-        protected ?InteracTransactionStatus $status = null
+        protected ?InteracTransactionStatus $status = null,
+        protected string $dateFormat = 'Y-m-d H:i:s',
     ) {
     }
 
@@ -21,8 +22,8 @@ class SearchRequestedEtransfer
     {
         return [
             RequestOptions::JSON => array_filter([
-                'StartDate' => $this->startDate->format('Y-m-d'),
-                'EndDate' => $this->endDate->format('Y-m-d'),
+                'StartDate' => $this->startDate->format($this->dateFormat),
+                'EndDate' => $this->endDate->format($this->dateFormat),
                 'Description' => $this->description,
                 'TransactionNumber' => $this->transactionNumber,
                 'InteracReferenceNumber' => $this->interacReferenceNumber,
