@@ -22,7 +22,10 @@ readonly class FoundTransaction implements ResultEntity
         public ?float $amount,
         public ?EFTTransactionStatus $transactionStatus,
         public ?string $transactionDescription,
-        public ?string $returnCode
+        public ?string $returnCode,
+        public ?\DateTimeImmutable $returnDate = null,
+        public ?string $uniqueId = null,
+        public array $rawData = [],
     ) {
     }
 
@@ -40,11 +43,14 @@ readonly class FoundTransaction implements ResultEntity
             transactionTypeDescription: $data['TransactionTypeDescription'] ?? null,
             eftTypeCode: !empty($data['EFTTypeCode']) ? EFTTypeCode::tryFrom($data['EFTTypeCode']) : null,
             eftTypeDescription: $data['EFTTypeDescription'] ?? null,
-            transactionDate: isset($data['TransactionDate']) ? new \DateTimeImmutable($data['TransactionDate']) : null,
+            transactionDate: (isset($data['TransactionDate']) && strtotime($data['TransactionDate'])) ? new \DateTimeImmutable($data['TransactionDate']) : null,
             amount: $data['Amount'] ?? null,
             transactionStatus: !empty($data['TransactionStatus']) ? EFTTransactionStatus::tryFrom($data['TransactionStatus']) : null,
             transactionDescription: $data['TransactionDescription'] ?? null,
-            returnCode: $data['ReturnCode'] ?? null
+            returnCode: $data['ReturnCode'] ?? null,
+            returnDate: (isset($data['ReturnDate']) && strtotime($data['ReturnDate'])) ? new \DateTimeImmutable($data['ReturnDate']) : null,
+            uniqueId: $data['UniqueId'] ?? null,
+            rawData: $data,
         );
     }
 }
