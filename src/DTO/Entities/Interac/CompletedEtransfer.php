@@ -19,6 +19,11 @@ readonly class CompletedEtransfer implements ResultEntity
         public ?string $transactionReferenceNumber,
         public ?string $transactionNumber,
         public ?bool $isAutoDeposit,
+        public ?string $financialInstitution = null,
+        public ?string $remittanceUnstructured = null,
+        public ?string $paymentType = null,
+        public ?string $senderEmail = null,
+        public array $rawData = [],
     ) {
     }
 
@@ -32,7 +37,7 @@ readonly class CompletedEtransfer implements ResultEntity
         $isAutoDeposit = match (true) {
             is_string($isAutoDeposit) && 'true' === strtolower($isAutoDeposit) => true,
             is_bool($isAutoDeposit) => $isAutoDeposit,
-            default => null,
+            default => false,
         };
 
         return new self(
@@ -47,7 +52,12 @@ readonly class CompletedEtransfer implements ResultEntity
             description: $data['Description'] ?? null,
             transactionReferenceNumber: $data['TransactionReferenceNumber'] ?? null,
             transactionNumber: $data['TransactionNumber'] ?? null,
-            isAutoDeposit: $isAutoDeposit
+            isAutoDeposit: $isAutoDeposit,
+            financialInstitution: $data['FinancialInstitution'] ?? null,
+            remittanceUnstructured: $data['RemittanceUnstructured'] ?? null,
+            paymentType: $data['PaymentType'] ?? null,
+            senderEmail: $data['SenderEmail'] ?? null,
+            rawData: $data,
         );
     }
 }
