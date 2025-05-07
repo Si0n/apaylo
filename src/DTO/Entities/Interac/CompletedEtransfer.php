@@ -17,6 +17,7 @@ readonly class CompletedEtransfer implements ResultEntity
         public ?string $referenceNumber,
         public ?string $description,
         public ?string $transactionReferenceNumber,
+        public ?string $transactionNumber,
         public ?bool $isAutoDeposit,
     ) {
     }
@@ -45,6 +46,7 @@ readonly class CompletedEtransfer implements ResultEntity
             referenceNumber: $data['ReferenceNumber'] ?? null,
             description: $data['Description'] ?? null,
             transactionReferenceNumber: $data['TransactionReferenceNumber'] ?? null,
+            transactionNumber: $data['TransactionNumber'] ?? null,
             isAutoDeposit: $isAutoDeposit
         );
     }
