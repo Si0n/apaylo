@@ -19,6 +19,9 @@ class BillPayment implements ResultEntity
         public ?\DateTimeImmutable $transactionDate,
         public ?string $traceNo,
         public ?string $transactionNumber,
+        public ?\DateTimeImmutable $settlementIsoDate = null,
+        public ?\DateTimeImmutable $transactionIsoDate = null,
+        public array $rawData = [],
     ) {
     }
 
@@ -28,14 +31,17 @@ class BillPayment implements ResultEntity
     public static function fromArray(array $data): self
     {
         return new self(
-            settlementDate: !empty($data['SettlementDate']) ? new \DateTimeImmutable($data['SettlementDate']) : null,
+            settlementDate: !empty($data['SettlementDate']) && strtotime($data['TransactionDate']) ? new \DateTimeImmutable($data['SettlementDate']) : null,
             processInstName: $data['ProcessInstName'] ?? null,
             paymentAmount: !empty($data['PaymentAmount']) ? (float) $data['PaymentAmount'] : null,
             customerAcctNo: $data['CustomerAcctNo'] ?? null,
             remitterName: $data['RemitterName'] ?? null,
-            transactionDate: !empty($data['TransactionDate']) ? new \DateTimeImmutable($data['TransactionDate']) : null,
+            transactionDate: !empty($data['TransactionDate']) && strtotime($data['TransactionDate']) ? new \DateTimeImmutable($data['TransactionDate']) : null,
             traceNo: $data['TraceNo'] ?? null,
             transactionNumber: $data['TransactionNumber'] ?? null,
+            settlementIsoDate: !empty($data['SettlementIsoDate']) && strtotime($data['SettlementIsoDate']) ? new \DateTimeImmutable($data['SettlementIsoDate']) : null,
+            transactionIsoDate: !empty($data['TransactionIsoDate']) && strtotime($data['TransactionIsoDate']) ? new \DateTimeImmutable($data['TransactionIsoDate']) : null,
+            rawData: $data,
         );
     }
 }
