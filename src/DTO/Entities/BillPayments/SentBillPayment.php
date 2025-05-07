@@ -9,7 +9,7 @@ class SentBillPayment implements ResultEntity
 {
     public function __construct(
         public ?string $customerName = null,
-        public ?string $transactionDate = null,
+        public ?\DateTimeImmutable $transactionDate = null,
         public ?float $amount = null,
         public ?string $billAccountNumber = null,
         public ?string $payeeName = null,
@@ -26,7 +26,7 @@ class SentBillPayment implements ResultEntity
     {
         return new self(
             customerName: $data['CustomerName'] ?? null,
-            transactionDate: $data['TransactionDate'] ?? null,
+            transactionDate: isset($data['TransactionDate']) && strtotime($data['TransactionDate']) ? new \DateTimeImmutable($data['TransactionDate']) : null,
             amount: $data['Amount'] ?? null,
             billAccountNumber: $data['BillAccountNumber'] ?? null,
             payeeName: $data['PayeeName'] ?? null,
