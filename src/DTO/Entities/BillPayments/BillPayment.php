@@ -7,16 +7,16 @@ use ApiIntegrations\Apaylo\DTO\Entities\ResultEntity;
 class BillPayment implements ResultEntity
 {
     /**
-     * @param \DateTimeInterface|null $settlementDate The settlement date is the date when the payment is final
+     * @param \DateTimeImmutable|null $settlementDate The settlement date is the date when the payment is final
      * @param string|null             $customerAcctNo The Customer Account Number includes both the Bill Pay Prefix and the customer's account number
      */
     public function __construct(
-        public ?\DateTimeInterface $settlementDate,
+        public ?\DateTimeImmutable $settlementDate,
         public ?string $processInstName,
         public ?float $paymentAmount,
         public ?string $customerAcctNo,
         public ?string $remitterName,
-        public ?\DateTimeInterface $transactionDate,
+        public ?\DateTimeImmutable $transactionDate,
         public ?string $traceNo,
         public ?string $transactionNumber,
     ) {

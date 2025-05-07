@@ -11,7 +11,7 @@ readonly class FoundSentEtransfer implements ResultEntity
         public ?string $interacReferenceNumber,
         public ?string $transactionNumber,
         public ?InteracTransactionStatus $transactionStatus,
-        public ?\DateTimeInterface $transactionDate,
+        public ?\DateTimeImmutable $transactionDate,
         public ?string $customerName,
         public ?string $customerEmail,
         public ?string $dcbTransactionId,

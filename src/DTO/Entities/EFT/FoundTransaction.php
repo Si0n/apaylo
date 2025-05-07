@@ -18,7 +18,7 @@ readonly class FoundTransaction implements ResultEntity
         public ?string $transactionTypeDescription,
         public ?EFTTypeCode $eftTypeCode,
         public ?string $eftTypeDescription,
-        public ?\DateTimeInterface $transactionDate,
+        public ?\DateTimeImmutable $transactionDate,
         public ?float $amount,
         public ?EFTTransactionStatus $transactionStatus,
         public ?string $transactionDescription,

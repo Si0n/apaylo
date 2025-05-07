@@ -7,7 +7,7 @@ use ApiIntegrations\Apaylo\DTO\Entities\ResultEntity;
 readonly class CompletedEtransfer implements ResultEntity
 {
     public function __construct(
-        public ?\DateTimeInterface $transactionDate,
+        public ?\DateTimeImmutable $transactionDate,
         public ?string $senderName,
         public ?string $senderBankName,
         public ?string $senderBankTransitNumber,

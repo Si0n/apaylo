@@ -8,7 +8,7 @@ readonly class HealthCheck implements ResultEntity
 {
     public function __construct(
         public ?string $message = null,
-        public ?\DateTimeInterface $time = null,
+        public ?\DateTimeImmutable $time = null,
     ) {
     }
 

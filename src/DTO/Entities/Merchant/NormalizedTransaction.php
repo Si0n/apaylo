@@ -8,7 +8,7 @@ use ApiIntegrations\Apaylo\Enum\Merchant\NormalizedTransactionType;
 readonly class NormalizedTransaction implements ResultEntity
 {
     public function __construct(
-        public ?\DateTimeInterface $transactionDate,
+        public ?\DateTimeImmutable $transactionDate,
         public ?NormalizedTransactionType $typOfTransaction,
         public ?float $amount,
         public ?string $description,

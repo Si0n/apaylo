@@ -13,7 +13,7 @@ readonly class IncomingTransfer implements ResultEntity
         public ?string $participantId,
         public ?string $currencyCode,
         public ?float $amount,
-        public ?\DateTimeInterface $expiryDate,
+        public ?\DateTimeImmutable $expiryDate,
         public ?string $senderMemo,
         public ?string $language,
         public ?string $senderRegistrationName,

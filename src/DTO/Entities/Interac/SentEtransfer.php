@@ -9,7 +9,7 @@ readonly class SentEtransfer implements ResultEntity
     public function __construct(
         public ?string $interacReferenceNumber = null,
         public ?string $transactionNumber = null,
-        public ?\DateTimeInterface $transactionDate = null,
+        public ?\DateTimeImmutable $transactionDate = null,
         public ?string $customerName = null,
         public ?string $description = null,
     ) {

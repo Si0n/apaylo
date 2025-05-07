@@ -9,7 +9,7 @@ use ApiIntegrations\Apaylo\Enum\Merchant\TransactionType;
 readonly class ReportTransactionItem implements ResultEntity
 {
     public function __construct(
-        public ?\DateTimeInterface $dateTime,
+        public ?\DateTimeImmutable $dateTime,
         public ?float $startingBalance,
         public ?string $transactionNumber,
         public TransactionRail | string | null $transactionRail,
