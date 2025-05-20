@@ -3,17 +3,18 @@
 namespace ApiIntegrations\Apaylo\DTO\Entities\Merchant;
 
 use ApiIntegrations\Apaylo\DTO\Entities\ResultEntity;
-use ApiIntegrations\Apaylo\Enum\Merchant\NormalizedTransactionType;
 
-readonly class NormalizedTransaction implements ResultEntity
+readonly class InternalTransaction implements ResultEntity
 {
     public function __construct(
         public ?\DateTimeImmutable $transactionDate,
-        public ?NormalizedTransactionType $typOfTransaction,
+        public ?string $transactionNumber,
         public ?float $amount,
+        public ?string $transactionType,
+        public ?string $accountNumber,
+        public ?string $customerName,
         public ?string $description,
-        public ?string $fullName,
-        public ?string $transactionId,
+        public ?string $uniqueId,
         public array $rawData = [],
     ) {
     }
@@ -25,11 +26,13 @@ readonly class NormalizedTransaction implements ResultEntity
     {
         return new self(
             transactionDate: isset($data['TransactionDate']) ? new \DateTimeImmutable($data['TransactionDate']) : null,
-            typOfTransaction: !empty($data['TypeOfTransaction']) ? NormalizedTransactionType::tryFrom($data['TypeOfTransaction']) : null,
+            transactionNumber: $data['TransactionNumber'] ?? null,
             amount: $data['Amount'] ?? null,
+            transactionType: $data['TransactionType'] ?? null,
+            accountNumber: $data['AccountNumber'] ?? null,
+            customerName: $data['CustomerName'] ?? null,
             description: $data['Description'] ?? null,
-            fullName: $data['FullName'] ?? null,
-            transactionId: $data['TransactionId'] ?? null,
+            uniqueId: $data['UniqueId'] ?? null,
             rawData: $data,
         );
     }
