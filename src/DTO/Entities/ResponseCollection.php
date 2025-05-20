@@ -2,6 +2,8 @@
 
 namespace ApiIntegrations\Apaylo\DTO\Entities;
 
+use ApiIntegrations\Apaylo\Utils\Util;
+
 /**
  * @template T of ResultEntity
  */
@@ -19,26 +21,24 @@ readonly class ResponseCollection
     }
 
     /**
-     * @template T of ResultEntity
-     *
      * @param class-string<T> $resultClass
      *
      * @return self<T>
      */
-    public static function fromArray(array $data, string $resultClass): self
+    public static function fromArray(array $data, string $resultClass, string $resultPath = 'Result'): self
     {
         if (!is_a($resultClass, ResultEntity::class, true)) {
             throw new \InvalidArgumentException('Result class must be an instance of ' . ResultEntity::class);
         }
-        $result = $data['Result'] ?? [];
-        if (400 === ($data['StatusCode'] ?? null)) {
+        $result = Util::arrayValue($resultPath, $data);
+        if (400 === Util::arrayValue('StatusCode', $data)) {
             $result = [];
         }
 
         return new self(
-            statusCode: $data['StatusCode'] ?? null,
-            isError: $data['IsError'] ?? null,
-            message: $data['Result']['Message'] ?? null,
+            statusCode: Util::arrayValue('StatusCode', $data),
+            isError: Util::arrayValue('IsError', $data),
+            message: Util::arrayValue('Result.Message', $data),
             result: array_map($resultClass::fromArray(...), $result),
         );
     }
