@@ -8,4 +8,5 @@ enum TransactionRail: string
     case INTERAC = 'Interac';
     case SEND_BILL_PAYMENT = 'SendBillPay';
     case BILL_PAY = 'BillPay';
+    case INTERNAL_TRANSFER = 'Internal Transfer';
 }
