@@ -18,6 +18,7 @@ class ClientMerchant implements ApiClient
     protected const string GET_ACTIVITY_REPORT = 'Merchant/GetActivityReport';
     protected const string GET_YESTERDAY_REPORT = 'Merchant/GetYesterdayReport';
     protected const string GET_ALL_TRANSACTIONS = 'Merchant/GetAllTransactions';
+    protected const string SEARCH_INTERNAL_TRANSFER = 'Merchant/SearchInternalTransfer';
 
     public function __construct(protected EnvClientManager $clientManager)
     {
@@ -70,6 +71,19 @@ class ClientMerchant implements ApiClient
     public function getAllTransactions(Requests\GetAllTransactions $request): ResponseCollection
     {
         $response = $this->clientManager->getHttpClient(ApiEnv::ENV_2)->post(self::GET_ALL_TRANSACTIONS, $request->toGuzzleOptions());
+        $result = json_decode((string) $response->getBody(), true);
+
+        return ResponseCollection::fromArray($result ?? [], Entities\NormalizedTransaction::class);
+    }
+
+    /**
+     * @throws GuzzleException
+     *
+     * @return ResponseCollection<Entities\NormalizedTransaction>
+     */
+    public function searchInternalTransaction(Requests\SearchInternalTransaction $request): ResponseCollection
+    {
+        $response = $this->clientManager->getHttpClient(ApiEnv::ENV_2)->post(self::SEARCH_INTERNAL_TRANSFER, $request->toGuzzleOptions());
         $result = json_decode((string) $response->getBody(), true);
 
         return ResponseCollection::fromArray($result ?? [], Entities\NormalizedTransaction::class);
