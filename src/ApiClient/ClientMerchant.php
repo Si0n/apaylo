@@ -46,6 +46,9 @@ class ClientMerchant implements ApiClient
     {
         $response = $this->clientManager->getHttpClient(ApiEnv::ENV_2)->post(self::GET_ACTIVITY_REPORT, $request->toGuzzleOptions());
         $result = json_decode((string) $response->getBody(), true);
+        if (!is_array($result)) {
+            $result = [];
+        }
 
         return ResponseCollection::fromArray($result ?? [], Entities\ReportTransactionItem::class);
     }
