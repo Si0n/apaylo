@@ -37,6 +37,10 @@ readonly class ResponseCollection
         if (!is_array($result)) {
             $result = [];
         }
+        if (!array_is_list($result)) {
+            $result = [];
+        }
+
 
         return new self(
             statusCode: Util::arrayValue('StatusCode', $data),
